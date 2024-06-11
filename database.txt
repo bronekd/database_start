@@ -2,3 +2,7 @@ Zkusit použít databasi s importem sqlite3
 
 import sqlite3
 
+udělat ukol:
+task 1
+a kouknout na task 4 a 5
+

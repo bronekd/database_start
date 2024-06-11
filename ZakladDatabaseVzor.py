@@ -1,4 +1,4 @@
-
+# vzor od učitele
 import sqlite3
 
 
@@ -11,12 +11,12 @@ cur.execute("""CREATE TABLE IF NOT EXISTS users (
             name TEXT,
             age INTEGER)""")
 
-#cur.execute("""INSERT INTO users (name, age) VALUES ('Jan', 33)""")
-#cur.execute("""INSERT INTO users (name, age) VALUES (?, ?)""", ("Adam", 23))
+cur.execute("""INSERT INTO users (name, age) VALUES ('Jan', 33)""")
+cur.execute("""INSERT INTO users (name, age) VALUES (?, ?)""", ("Adam", 23))
 
 #db_insert(cur, "users", ["name", "age"], ["Adam", 44])
 
-#conn.commit()
+conn.commit()
 
 cur.execute("SELECT * FROM users")
 rows = cur.fetchall()
