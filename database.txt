@@ -1,0 +1,4 @@
+Zkusit použít databasi s importem sqlite3
+
+import sqlite3
+
