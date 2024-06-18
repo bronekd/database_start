@@ -1,4 +1,3 @@
-
 import socket
 import threading
 
@@ -18,6 +17,9 @@ def autentificate(client_socket):
 
 def choose_room(client_socket):
     try:
+        message = client_socket.recv(1024).decode('utf-8')
+        print(message)
+
         room = input("Zadejte room: ")
         client_socket.send(room.encode('utf-8'))
         return room

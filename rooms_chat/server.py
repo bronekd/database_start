@@ -56,6 +56,19 @@ def handle_client(client_socket, room, username):
                 del rooms[room]
             break
 
+def load_rooms():
+    conn = sqlite3.connect('chat_server.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM rooms')
+    rooms_list = cursor.fetchall()
+    conn.close()
+    message = "Dostupné miestnosti:\n"
+    for room in rooms_list:
+        message += f"{room[0]}. {room[1]}\n"
+
+    return message
+
+
 def authenticate_user(username, password):
     conn = sqlite3.connect('chat_server.db')
     cursor = conn.cursor()
@@ -75,6 +88,10 @@ def receive_connections(server_socket):
             client_socket.send("Připojení k serveru bylo úspěšné!".encode('utf-8'))
 
             print(f"Uživatelské jméno klienta je {username}")
+
+            message = load_rooms()
+            client_socket.send(message.encode())
+
             room = client_socket.recv(1024).decode('utf-8')
             if room not in rooms:
                 rooms[room] = []
