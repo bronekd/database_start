@@ -1,5 +1,8 @@
 # další úkol přidat registraci dostanu kod a rozšířit ho simulace reálného života.
+# přidat časy v poslaných zprávách kdo kdy a co poslal
 # další typ uklidit to
+# vylepšit zobrazoví poslaných posledních zpráv
+
 
 import socket
 import threading
@@ -104,7 +107,8 @@ def receive_connections(server_socket):
 
             broadcast(f"{username} se připojil k chatu!".encode('utf-8'), room, client_socket)
 
-
+            # toto přidat
+            messages = load_last_messages(room)
 
             thread = threading.Thread(target=handle_client, args=(client_socket, room, username))
             thread.start()
