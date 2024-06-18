@@ -46,6 +46,16 @@ print(data)
 # Task 4
 # ziskejte zoznam použivatelov a poČet sprav ktere kazdy napsal
 
+cur.execute("""
+SELECT users.username, COUNT(messages.id) AS mesage_count
+FROM users
+LEFT JOIN messages on users.id = messages.user_id
+GROUP BY users.id;
+""")
+print("Task4")
+data = cur.fetchall()
+print(data)
+
 # Task 5
 # ziskejte zoznam mistnosti a pocet sprav v kazydej z nich
 
