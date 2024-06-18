@@ -1,3 +1,6 @@
+# další úkol přidat registraci dostanu kod a rozšířit ho simulace reálného života.
+# další typ uklidit to
+
 import socket
 import threading
 import sqlite3
@@ -100,7 +103,7 @@ def receive_connections(server_socket):
             print(f"Klient sa pripojil do miestnosti: {room}")
 
             broadcast(f"{username} se připojil k chatu!".encode('utf-8'), room, client_socket)
-            
+
 
 
             thread = threading.Thread(target=handle_client, args=(client_socket, room, username))
