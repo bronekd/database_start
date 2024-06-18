@@ -1,0 +1,1 @@
+# další hodina pokračování SQL
