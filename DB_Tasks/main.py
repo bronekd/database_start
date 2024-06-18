@@ -57,11 +57,28 @@ data = cur.fetchall()
 print(data)
 
 # Task 5
-# ziskejte zoznam mistnosti a pocet sprav v kazydej z nich
-
+# ziskejte zoznam mistnosti a pocet sprav v každej z nich
+cur.execute("""
+SELECT rooms.name, COUNT(messages.id) AS message_count
+FROM rooms
+LEFT JOIN messages ON rooms.id = messages.room_id
+GROUP BY rooms.id;
+""")
+print("Task5")
+data = cur.fetchall()
+print(data)
 
 # Task 6
 # ziskajte zoznam pouzivatelov a ich celkovy pocet prispevkov v jednotlivych miestnostiach
-
+cur.execute("""
+SELECT users.username, rooms.name, COUNT(messages.id) AS message_count
+FROM users
+LEFT JOIN messages ON users.id = messages.user_id
+LEFT JOIN rooms ON messages.room_id = rooms.id
+GROUP BY users.id, rooms.id;
+""")
+print("Task6")
+data = cur.fetchall()
+print(data)
 
 conn.close()
